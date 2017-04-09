@@ -1,3 +1,70 @@
-.header{
-    margin-left: 40px;
+body{
+    background-color: #FFFFFF;
 }
+
+
+.headList{
+    width: 70%;
+    margin-top: 2%;
+    margin-left: 20%;
+}
+
+
+.headLeft{
+    margin-left: 3%;
+    float: left;
+    cursor: pointer;
+}
+
+
+.headRight{
+    margin-right: 3%;
+    float: right;
+    cursor: pointer;
+}
+
+
+.headRight:hover{
+    font-weight: bold;
+    color: #0101DF;
+}
+
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.banner{
+    margin-top: -3%;
+    clear: both;
+    width: 100%;
+    height: 200px;
+    background-color: #5882FA;
+}
+
+.bannerText{
+    color: white;
+    margin-top: 5%;
+    text-align: center;
+}
+
+.signUpButton{
+    display: flex;
+    margin-left: 41%;
+    width: 18%;
+    height: 20%;
+    background-color: #04B404;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6%;
+    cursor: pointer;
+}
+
+.signUpButton:hover{
+    background-color: green;
+}
+
+
+
