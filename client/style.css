@@ -2,54 +2,50 @@ body{
     background-color: #FFFFFF;
 }
 
+/*1. Abschnitt*/
 
 .headList{
-    width: 70%;
-    margin-top: 2%;
+    width: 60%;
+    margin-top: 1%;
     margin-left: 20%;
 }
-
-
-.headLeft{
-    margin-left: 3%;
-    float: left;
-    cursor: pointer;
-}
-
-
-.headRight{
-    margin-right: 3%;
-    float: right;
-    cursor: pointer;
-}
-
-
-.headRight:hover{
-    font-weight: bold;
-    color: #0101DF;
-}
-
-
 .clearfix:after {
   content: "";
   display: table;
   clear: both;
 }
+.title{
+    font-size: 16px;
+}
+.headLeft{
+    margin-left: 4%;
+    float: left;
+    cursor: pointer;
+}
+.headRight{
+    margin-right: 4%;
+    float: right;
+    cursor: pointer;
+}
+.headRight:hover{
+    font-weight: bold;
+    color: #0101DF;
+}
+
+/*2. Abschnitt*/
 
 .banner{
-    margin-top: -3%;
+    margin-top: 1%;
     clear: both;
     width: 100%;
-    height: 200px;
+    height: 250px;
     background-color: #5882FA;
 }
-
 .bannerText{
+    padding-top: 1.5%;
     color: white;
-    margin-top: 5%;
     text-align: center;
 }
-
 .signUpButton{
     display: flex;
     margin-left: 41%;
@@ -61,10 +57,20 @@ body{
     border-radius: 6%;
     cursor: pointer;
 }
-
 .signUpButton:hover{
     background-color: green;
 }
 
+/*3. Abschnitt*/
+
+.container{
+    margin-top: 1%;
+    margin-left: 20%;
+    width: 60%;
+}
+
+.col-sm-4{
+    text-align: center;
+}
 
 
