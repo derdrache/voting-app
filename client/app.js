@@ -5,8 +5,11 @@ var app = angular.module("VotingApp", ["ngRoute"]);
     .when("/", {
         templateUrl: '/views/home.html'
     })
-    .when("/test", {
-        templateUrl: "/views/test.html"
+    .when("/signUp", {
+        templateUrl: "/views/signUp.html"
+    })
+    .when("/login", {
+        templateUrl: "/views/login.html"
     })
 
 });

@@ -41,6 +41,7 @@ body{
     height: 250px;
     background-color: #5882FA;
 }
+
 .bannerText{
     padding-top: 1.5%;
     color: white;
@@ -73,4 +74,16 @@ body{
     text-align: center;
 }
 
+/*signUp + login*/
+
+.userdata{
+    font-size: 20px;
+    margin-left: 22%;
+    margin-top: 2%;
+    
+}
+
+input{
+    border-radius: 5px;
+}
 

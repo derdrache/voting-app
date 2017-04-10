@@ -1,15 +1,15 @@
 <div class="headlist clearfix">
-            <div class="headLeft title">VoteDOM</div>
-            <div class="headLeft">Home</div>
-            <div class="headRight">Login</div>
-            <div class="headRight"> <a href="#/test">Sign Up</a></div>
+            <div class="headLeft title" ng-click="go('/')">VoteDOM</div>
+            <div class="headLeft" ng-click="go('/')">Home</div>
+            <div class="headRight" ng-click="go('/login')">Login</div>
+            <div class="headRight" ng-click="go('/signUp')">Sign Up</div>
         </div>
         
         <div class="banner ">
             <div class="bannerText">
-                <h1>VoteDOM</h1>
-                <p>Erstelle deine eignen Umfragen</p>
-                <div class="signUpButton">Sign Up</div>
+                <h1>VoteDOM</h1><br>
+                <p>Erstelle deine eignen Umfragen</p><br>
+                <div class="signUpButton" ng-click="go('/signUp')">Sign Up</div>
             </div>
         </div>
      
