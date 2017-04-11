@@ -39,7 +39,7 @@ app.post("/signUp", function(req,res){
         /* prüfen ob Name und Email schon vergeben sind */
         db.collection("userdata").find({}).toArray(function(err,result){
             if (err) throw err;
-            var check = true;
+            var check = false;
     
                for (var i= 0; i< result.length; i++){
                   if (req.body.name.toLowerCase() == result[i].user){
@@ -53,18 +53,17 @@ app.post("/signUp", function(req,res){
                }
                
                /* Name oder Email schon in Benutzung */
-               if (check !== "true"){
+               if (check !== false){
                    res.send(check);
                    db.close();
                }
-                /* User Daten in die Db schreiben */
-               else{
+               else {
                     db.collection("userdata").insert({
                         "user": req.body.name,
                         "email": req.body.email,
                         "password": req.body.password
                     });
-                    
+                check = true;    
                 res.send(check);    
                 db.close();
                }
