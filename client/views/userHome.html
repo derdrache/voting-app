@@ -1,1 +1,20 @@
-sehr gut, weiter so !
+<div class="headlist clearfix">
+            <div class="headLeft title" ng-click="go('/userHome')">VoteDOM</div>
+            <div class="headLeft" ng-click="go('/userHome')">Home</div>
+            <div class="headRightNew auswahl" ng-click="go('/')" >Logout</div>
+            <div class="headRightNew auswahl" ng-click="go('/settings')">Settings</div>
+            <div class="headRightNew">Hi {{loginName}}</div>
+        </div>
+        
+        <div class="banner ">
+            <div class="bannerText">
+                <h1 class="bannerHeader">VoteDOM</h1><br>
+                <p>Erstelle deine eignen Umfragen</p><br>
+                <div class="umfrageBox">
+                    <div class="umfrageButton auswahl" ng-click="go('/userUmfrage')" >Umfrage erstellen</div>
+                    <div class ="umfrageButton auswahl bannerButtonAuswahl" ng-click="go('/userHome')">Meine Umfragen</div>
+                </div>    
+            </div>
+        </div>
+        
+        <div>Hier könnte die Liste des Users stehen</div>

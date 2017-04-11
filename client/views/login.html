@@ -2,12 +2,12 @@
             <div class="headLeft title" ng-click="go('/')">VoteDOM</div>
             <div class="headLeft" ng-click="go('/')">Home</div>
             <div class="headRight chosen" ng-click="go('/login')">Login</div>
-            <div class="headRight" ng-click="go('/signUp')">Sign Up</div>
+            <div class="headRight" ng-click="go('/signUp')" >Sign Up</div>
         </div>
         
         <div class="banner ">
             <div class="bannerText">
-                <h1>VoteDOM</h1><br>
+                <h1 class="bannerHeader">VoteDOM</h1><br>
                 <p>Erstelle deine eignen Umfragen</p><br>
                 <h4>Schnell Einloggen und es kann los gehen!</h4>
             </div>
@@ -16,10 +16,10 @@
         <div class="userdata">
             <form >
                 Name: <br>
-                <input type="text" ng-model="login.name"> <br><br>
+                <input type="text" ng-model="login.name" ng-keypress="loginSubmit(login, $event)"> <br><br>
                 Passwort: <br>
-                <input type="password" ng-model="login.password"> <br><br>
-                <button type="button" ng-click="loginSubmit(login)">Login</button>
+                <input type="password" ng-model="login.password" ng-keypress="loginSubmit(login, $event)"> <br><br>
+                <button type="button" ng-click="loginSubmit(login)" >Login</button>
                 <p>{{loginError}}</p>
             </form>
         </div>    

@@ -4,15 +4,22 @@ var app = angular.module("VotingApp", ["ngRoute"]);
     $routeProvider
     .when("/", {
         templateUrl: '/views/home.html'
+        
     })
     .when("/signUp", {
         templateUrl: "/views/signUp.html"
     })
     .when("/login", {
-        templateUrl: "/views/login.html"
+        templateUrl: "/views/login.html",
     })
     .when("/userHome",{
-        templateUrl: "/views/userHome.html"
+        templateUrl: "/views/userHome.html",
     })
+    .when("/userUmfrage", {
+        templateUrl: "/views/userUmfrage.html"
+    })
+    .when("/settings", {
+        templateUrl: "/views/settings.html"
+    })    
 
 });

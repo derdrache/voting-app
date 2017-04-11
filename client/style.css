@@ -2,8 +2,15 @@ body{
     background-color: #FFFFFF;
 }
 
-/*1. Abschnitt*/
+/* Global */
 
+input{
+    width: 400px;
+}
+
+/*Home*/
+
+/* 1. Abschnitt */ 
 .headList{
     width: 60%;
     margin-top: 1%;
@@ -19,6 +26,7 @@ body{
 }
 .chosen{
     color: blue;
+    cursor: pointer;
 }
 .headLeft{
     margin-left: 4%;
@@ -46,9 +54,13 @@ body{
 }
 
 .bannerText{
-    padding-top: 1.5%;
+    padding-top: 1%;
     color: white;
     text-align: center;
+}
+
+.bannerHeader{
+    font-size: 50px;
 }
 .signUpButton{
     display: flex;
@@ -60,6 +72,7 @@ body{
     align-items: center;
     border-radius: 6%;
     cursor: pointer;
+    font-size: 18px;
 }
 .signUpButton:hover{
     background-color: green;
@@ -77,6 +90,8 @@ body{
     text-align: center;
 }
 
+
+
 /*signUp + login*/
 
 .userdata{
@@ -88,5 +103,51 @@ body{
 
 input{
     border-radius: 5px;
+}
+
+
+
+
+/* userHome */
+
+.auswahl:hover{
+     color: #0101DF;
+     font-weight: bold;
+     cursor: pointer;
+}
+.headRightNew{
+    margin-right: 4%;
+    float: right;
+}
+
+
+.umfrageBox{
+    margin-left: 41%;
+}
+
+.umfrageButton{
+    float: left;
+    display: flex;
+    margin-right: 3%;
+    width: 15%;
+    height: 20%;
+    background-color: #04B404;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6%;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.bannerButtonAuswahl{
+    background-color: green;
+}
+
+
+/* Setting */
+
+.settingPos{
+    padding-top: 10px;
+    margin-left: 40%;
 }
 

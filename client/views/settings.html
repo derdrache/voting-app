@@ -1,0 +1,19 @@
+<div class="headlist clearfix">
+            <div class="headLeft title" ng-click="go('/userHome')">VoteDOM</div>
+            <div class="headLeft" ng-click="go('/userHome')">Home</div>
+            <div class="headRightNew auswahl" ng-click="go('/')" >Logout</div>
+            <div class="headRightNew chosen" ng-click="go('/settings')">Settings</div>
+            <div class="headRightNew">Hi {{loginName}}</div>
+        </div>
+        
+        <div class="banner">
+        <div class="settingPos">
+            alter Passwort: <br>
+            <input type="password" ng-model="changePassword.old"> <br><br>
+            neues Passwort: <br>
+            <input type="password" ng-model="changePassword.new1"> <br><br>
+            neues Passwort wiederholen: <br>
+            <input type="password" ng-model="changePassword.new2"> <br><br>
+            <button ng-click="changePassword(changePassword)">Speichern</button>
+        </div>
+        </div>
