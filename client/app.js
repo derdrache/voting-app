@@ -11,5 +11,8 @@ var app = angular.module("VotingApp", ["ngRoute"]);
     .when("/login", {
         templateUrl: "/views/login.html"
     })
+    .when("/userHome",{
+        templateUrl: "/views/userHome.html"
+    })
 
 });
