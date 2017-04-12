@@ -59,8 +59,8 @@ app.post("/signUp", function(req,res){
                }
                else {
                     db.collection("userdata").insert({
-                        "user": req.body.name,
-                        "email": req.body.email,
+                        "user": req.body.name.toLowerCase(),
+                        "email": req.body.email.toLowerCase(),
                         "password": req.body.password
                     });
                 check = true;    
@@ -71,9 +71,32 @@ app.post("/signUp", function(req,res){
     });
 });
 
+/* Passwort Änderung*/
+app.post("/settings", function(req,res){
+    mongoClient.connect(dburl, function(err, db){
+        if (err) throw err;
+        
+        /* altes Passwort richtig?*/ 
+        db.collection("userdata").find({"user": req.body.userName}).toArray(function(err, result){
+            if (err) throw err;
+         
+            if (result[0].password !== req.body.old){
+                res.send("Passwort ist falsch");
+            } else{
+                /* Wenn richtig, neues Passwort in die db*/
+                db.collection("userdata").update({"user": req.body.userName.toLowerCase()},
+                {$set:
+                {"password" : req.body.new1}
+                });
+                res.send("Passwort erfolgreich geändert");
+            }
+             db.close();
+        });
+            
+    });
+});
+
 /* Hier könnte es weiter gehen*/
-
-
 
 
 

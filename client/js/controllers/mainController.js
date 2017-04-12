@@ -1,9 +1,17 @@
-app.controller('MainController', ['$scope', "$location", "$http", function($scope,$location, $http) {
+app.controller('MainController', ['$scope', "$location", "$http", "$cookies", function($scope,$location, $http, $cookies) {
    
+    
+    
+    
     $scope.go = function(path){
         $location.path(path);
     };
     
+    $scope.logout = function(){
+        $location.path('/');
+        $cookies.remove("userName");
+        $scope.userName = $cookies.get("userName");
+    }
     
     $scope.newSubmit = function (newUserData){
        if (!newUserData.name || !newUserData.email || !newUserData.password)
@@ -12,7 +20,9 @@ app.controller('MainController', ['$scope', "$location", "$http", function($scop
             $http.post("/signUp", newUserData).success(function(res){
                 if (res == true){$location.path("/userHome")}
                 else{$scope.regError = res}
-                $scope.loginName = newUserData.name;
+                $cookies.put("userName", newUserData.name) 
+                $scope.userName = $cookies.get("userName");
+                
             });
        }
     };
@@ -22,13 +32,17 @@ app.controller('MainController', ['$scope', "$location", "$http", function($scop
             $http.post ("/login", loginData).success(function(res){
                 if (res == true){
                     $location.path("/userHome");
-                    localStorage.setItem("name", loginData.name)
-                    $scope.loginName = localStorage.getItem("name");
-                    
+                    $cookies.put("userName", loginData.name)
+                    $scope.userName = $cookies.get("userName");
                 }
                 else {$scope.loginError = "Name oder Passwort falsch"}
             });
         }
     };
+    
+    
+    
+    
+
 
 }]);
