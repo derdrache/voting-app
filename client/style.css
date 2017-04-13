@@ -160,3 +160,20 @@ input{
     margin-left: 2%;
     float: left;
 }
+
+/* UserHome */
+
+.umfrageAnzeige{
+    margin-top: 2%;
+}
+
+
+/* UserUmfrage */
+
+.mittig{
+    text-align: center;
+}
+
+.umfrageLink{
+    margin-top: 2%;
+}

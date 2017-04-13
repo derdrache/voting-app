@@ -7,7 +7,6 @@ app.controller('settingController', ['$scope', "$location", "$http","$cookies", 
             else{
                 if (data.new1 === data.new2){
                     $http.post("/settings", data).success(function(res){
-                     console.log(res);
                     $scope.passwordChangeError = res;
                     });
                 }

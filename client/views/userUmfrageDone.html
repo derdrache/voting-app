@@ -12,22 +12,12 @@
                 <p>Erstelle deine eignen Umfragen</p><br>
                 <div class="umfrageBox">
                     <div class="umfrageButton auswahl" ng-click="go('/userUmfrage')" >Umfrage erstellen</div>
-                    <div class ="umfrageButton auswahl bannerButtonAuswahl" ng-click="go('/userHome')">Meine Umfragen</div>
+                    <div class ="umfrageButton auswahl" ng-click="go('/userHome')">Meine Umfragen</div>
                 </div>    
             </div>
         </div>
         
-        <div class="mittig"><h1>Deine Umfragen:</h1>
-        <table class="table umfrageAnzeige ">
-            <thead>
-                <th class="mittig"><h3>title</h3></th>
-                <th class="mittig"><h3>stimmen</h3></th>
-                <th class="mittig"><h3>link</h3></th>
-            </thead>
-            <tbody ng-repeat="daten in umfrageDaten">
-                <th class="mittig">{{daten.title}}</th>
-                <th class="mittig">{{stimmenGes || 0}}</th>
-                <th class="mittig">{{daten.umfragenUrl}}</th>
-            </tbody>
-        </table>
+        <div class="mittig umfrageLink">
+           <h3>Dein Link zur Umfrage:</h3> <br><br>
+           <h3>{{umfrageLink}}</h3>
         </div>

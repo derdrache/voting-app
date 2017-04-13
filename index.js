@@ -96,8 +96,52 @@ app.post("/settings", function(req,res){
     });
 });
 
-/* Hier könnte es weiter gehen*/
+/* Achtung der User erstellt eine Umfrage!*/
+app.post("/userUmfrage", function(req,res){
+    mongoClient.connect(dburl, function(err,db){
+        if (err) throw err;
+        
+        /* prüfen ob parameter schon vergeben sind */
+        db.collection("umfragen").find({"user": req.body.user, "title": req.body.title}).toArray(function(err,result){
+        if (err) throw err;
+        if (result === []){console.log(result); res.send("Umfragenname bereits in Verwendung")}
+        else{
+            var titleChange = req.body.title.split(" ").join("-");
+            var newUrl = "https://dynamic-web-application-projects-derdrache.c9users.io/#/"+req.body.user+"/"+titleChange;
+            
+                db.collection("umfragen").insert({
+                    "user": req.body.user,
+                    "umfragenUrl": newUrl,
+                    "title": req.body.title,
+                    "optionen": req.body.optionen,
+                    "stimmen": req.body.stimmen
+                }); 
+                res.send(newUrl)    
+            }
+        db.close();   
+        });
+    });
+});
 
+/* User Umfragenliste abfragen */
+
+app.post("/userHome", function(req,res){
+    mongoClient.connect(dburl, function(err,db){
+        if (err) throw err;
+        
+        db.collection("umfragen").find({"user": req.body.user}).toArray(function(err, result){
+            if (err) throw err;
+
+          var userUmfragen = [];
+          for (var i=result.length; i>0; i--){
+              userUmfragen.push(result[i-1]);
+          }
+          
+        res.send(userUmfragen);    
+        db.close();
+        })
+    })
+})
 
 
 app.listen((process.env.PORT||8080|| 5000), function(){
