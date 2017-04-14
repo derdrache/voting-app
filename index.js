@@ -3,10 +3,13 @@ var bodyParser = require("body-parser");
 var app = express();
 const mongoClient = require("mongodb").MongoClient;
 const dburl = "mongodb://webapps:webapps@ds157500.mlab.com:57500/webapps";
+const url = "https://dynamic-web-application-projects-derdrache.c9users.io/#/"
 
 
 app.use(express.static(__dirname+"/client"));
 app.use(bodyParser.json());
+
+
 
 /* Login vorgang*/
 app.post("/login", function(req,res){
@@ -106,8 +109,12 @@ app.post("/userUmfrage", function(req,res){
         if (err) throw err;
         if (result === []){console.log(result); res.send("Umfragenname bereits in Verwendung")}
         else{
+            
+            /* Daten in die db*/
             var titleChange = req.body.title.split(" ").join("-");
-            var newUrl = "https://dynamic-web-application-projects-derdrache.c9users.io/#/"+req.body.user+"/"+titleChange;
+            titleChange = titleChange.slice(0,titleChange.indexOf("?"));
+            var newUrl = url+req.body.user+"/"+titleChange;
+            
             
                 db.collection("umfragen").insert({
                     "user": req.body.user,
@@ -116,7 +123,7 @@ app.post("/userUmfrage", function(req,res){
                     "optionen": req.body.optionen,
                     "stimmen": req.body.stimmen
                 }); 
-                res.send(newUrl)    
+                res.send(newUrl);   
             }
         db.close();   
         });
@@ -139,11 +146,44 @@ app.post("/userHome", function(req,res){
           
         res.send(userUmfragen);    
         db.close();
-        })
-    })
-})
+        });
+    });
+});
+
+
+/* Spezifische UserUmfrage anzeigen*/
+
+app.post("/umfragen", function(req,res){
+    mongoClient.connect(dburl, function(err,db){
+        if (err) throw err;
+        
+        /* Umfrage abfragen */
+        if (!req.body.stimmen){
+            db.collection("umfragen").find({"user": req.body.user, "umfragenUrl": url+req.body.user+"/"+req.body.title }).toArray(function(err,result){
+                if (err) throw err;
+               
+            res.send(result[0]);
+            db.close();    
+            });
+        }
+        else{
+            db.collection("umfragen").update({"user": req.body.user, "umfrageUrl": req.body.umfrageUrl},
+                {$set:
+                {"stimmen": req.body.stimmen}
+                });
+            res.send("Deine Abstimmung war erfolgreich")    
+            db.close();    
+        }
+    });
+});
+
+
+
+
+
 
 
 app.listen((process.env.PORT||8080|| 5000), function(){
     console.log("roger, we are online...");
 })
+

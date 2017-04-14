@@ -1,0 +1,37 @@
+<div class="headlist clearfix">
+            <div class="headLeft title" ng-click="go('/userHome')">VoteDOM</div>
+            <div class="headLeft" ng-click="go('/userHome')">Home</div>
+            <div class="headRightNew auswahl" ng-click="logout()" >Logout</div>
+            <div class="headRightNew auswahl" ng-click="go('/settings')">Settings</div>
+            <div class="headRightNew">Hi {{userName}}</div>
+        </div>
+        
+        <div class="banner ">
+            <div class="bannerText">
+                <h1 class="bannerHeader">VoteDOM</h1><br>
+                <p>Erstelle deine eignen Umfragen</p><br>
+                <div class="umfrageBox">
+                    <div class="umfrageButton auswahl" ng-click="go('/userUmfrage')" >Umfrage erstellen</div>
+                    <div class ="umfrageButton auswahl bannerButtonAuswahl" ng-click="go('/userHome')">Meine Umfragen</div>
+                </div>    
+            </div>
+        </div>
+        
+        <div class="mittig umfrageAnzeige" ng-show="abstimmenShow">
+            <div>
+                <h1>{{umfrageDaten.title}}</h1>
+                <div ng-repeat="option in optionen">
+                    <button class="umfrageOptionen" ng-click="auswahl(option)"><h3>{{option}}</button>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="mittig umfrageAnzeige" ng-show="abstimmungsErgebnis">
+            <h3>{{abgestimmt}}</h3>
+            <div>
+                hier muss ein diagramm rein
+            </div>
+        </div>
+
+        

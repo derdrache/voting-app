@@ -3,9 +3,9 @@ var app = angular.module("VotingApp", ["ngRoute", "ngCookies"]);
  app.config(function($routeProvider) {
     $routeProvider
     .when("/", {
-        templateUrl: '/views/home.html'
-        
+        templateUrl: 'views/home.html'
     })
+
     .when("/signUp", {
         templateUrl: "/views/signUp.html",
         controller: "signUpController"
@@ -30,5 +30,10 @@ var app = angular.module("VotingApp", ["ngRoute", "ngCookies"]);
         templateUrl: "/views/userUmfrageDone.html",
         controller: "userUmfrageController"
     })
-
+    .when("/:user/:title" ,{
+        templateUrl: "/views/umfragen.html",
+        controller: "umfragenController"
+    })
+    
+     
 });

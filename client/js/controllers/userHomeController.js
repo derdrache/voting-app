@@ -7,6 +7,7 @@
       $http.post("/userHome", user).success(function(res){
        
        $scope.umfrageDaten = res;
+       
       });
      
      
