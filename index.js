@@ -167,7 +167,7 @@ app.post("/umfragen", function(req,res){
             });
         }
         else{
-            db.collection("umfragen").update({"user": req.body.user, "umfrageUrl": req.body.umfrageUrl},
+            db.collection("umfragen").update({"umfragenUrl": req.body.umfragenUrl},
                 {$set:
                 {"stimmen": req.body.stimmen}
                 });

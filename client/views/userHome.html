@@ -26,8 +26,8 @@
             </thead>
             <tbody ng-repeat="daten in umfrageDaten">
                 <th class="mittig">{{daten.title}}</th>
-                <th class="mittig">{{stimmenGes || 0}}</th>
-                <th class="mittig">{{daten.umfragenUrl}}</th>
+                <th class="mittig">{{daten.stimmenGes || 0}}</th>
+                <th class="mittig"><a href={{daten.umfragenUrl}}>{{daten.umfragenUrl}}</a></th>
             </tbody>
         </table>
         </div>

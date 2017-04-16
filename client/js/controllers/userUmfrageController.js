@@ -1,8 +1,9 @@
  app.controller('userUmfrageController', ['$scope', "$location", "$http", "$cookies", function($scope,$location, $http, $cookies) {
    
-    $scope.inputs = [{},{}];
-    $scope.umfrageLink = $cookies.get("newUmfrage");
+     $scope.inputs = [{},{}];
      $scope.userName = $cookies.get("userName");
+     $scope.umfrageErstellen = true;
+     $scope.showLink = false;
      
     $scope.addField = function(){
       $scope.inputs.push({})
@@ -25,11 +26,10 @@
        }
        
        $http.post("/userUmfrage", umfrage).success(function(res){
-        $cookies.put("newUmfrage", res);
-        $location.path("/userUmfrageDone");
-        
+        $scope.umfrageLink = res;
+        $scope.umfrageErstellen = false;
+        $scope.showLink = true
+
        })
      }
-   
- 
  }]);

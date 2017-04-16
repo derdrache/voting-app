@@ -182,4 +182,26 @@ input{
 
 .umfrageOptionen{
     margin-top: 2%;
+   
+}
+
+.axis--x{
+    font-size: 30px;
+}
+
+.signUpButtonNew{
+    display: flex;
+    width: 18%;
+    margin-left: 7%;
+    height: 20%;
+    background-color: #04B404;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6%;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+svg{
+    margin-top: 5%;
 }

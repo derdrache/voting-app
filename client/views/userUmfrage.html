@@ -17,7 +17,7 @@
             </div>
         </div>
         
-        <div class="mittig">
+        <div class="mittig" ng-show="umfrageErstellen">
             <h1>Neue Umfrage erstellen</h1> <br>
             <p>Name deiner Umfrage:</p> <br>
             <input type="text" ng-model="neueUmfrage.title"> <br><br><br>
@@ -25,11 +25,14 @@
             <div ng-repeat="item in inputs">
                 <input ng-model="item.value"/>
                 <br><br>
-
             </div>
             <button ng-click="addField()">mehr Auswahl</button>
             <button ng-click="getData(neueUmfrage)">speichern</button>           
-            
+        </div>
+        
+        <div class="mittig umfrageLink" ng-show="showLink">
+           <h3>Dein Link zur Umfrage:</h3> <br><br>
+           <h3>{{umfrageLink}}</h3>
         </div>
 
 
