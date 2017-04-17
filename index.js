@@ -3,7 +3,7 @@ var bodyParser = require("body-parser");
 var app = express();
 const mongoClient = require("mongodb").MongoClient;
 const dburl = "mongodb://webapps:webapps@ds157500.mlab.com:57500/webapps";
-const url = "https://dynamic-web-application-projects-derdrache.c9users.io/#/"
+const url = "https://derdrache-voting-app.herokuapp.com/#/";
 
 
 app.use(express.static(__dirname+"/client"));
