@@ -174,7 +174,7 @@ app.post("/umfragen", function(req,res){
                 {$set:
                 {"stimmen": req.body.stimmen}
                 });
-            res.send("Deine Abstimmung war erfolgreich")    
+            res.send({"ausgabe": "Deine Abstimmung war erfolgreich", "id": req.body._id})    
             db.close();    
         }
     });

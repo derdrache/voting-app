@@ -24,13 +24,16 @@ app.controller('umfragenController', ['$scope', "$location", "$http", "$cookies"
         $scope.umfrageDaten = res;
         $scope.optionen = res.optionen;
         daten= res;
-        
+    
         /* Wenn schon abgestimmt*/
-        if ($cookies.get("userAbgestimmt")){
+        
+        if ($cookies.get(res._id)){
             Zeichnung();
             $scope.abstimmenShow = false;
             $scope.abstimmungsErgebnis = true;
         }
+        
+        
     });
     
   
@@ -40,7 +43,7 @@ app.controller('umfragenController', ['$scope', "$location", "$http", "$cookies"
     /* Abstimmen */
     $scope.auswahl = function(auswahl){
         var index= -1;
-        $cookies.put("userAbgestimmt", true)
+        
 
         for (var i = 0; i<daten.optionen.length; i++){
             if (auswahl == daten.optionen[i]){
@@ -53,16 +56,18 @@ app.controller('umfragenController', ['$scope', "$location", "$http", "$cookies"
        
         
         $http.post("/umfragen", daten).success(function(res){
-            $scope.abgestimmt = res;
+            $cookies.put(res.id.toString(), true)
+            //$scope.abgestimmt = res;
             $scope.abstimmungsErgebnis = true;
-            alert(res);
+            alert(res.ausgabe);
+            
         });
       
         
-        // Darstellung
         Zeichnung();
 
     };  
+    
     
     
     function Zeichnung (){
