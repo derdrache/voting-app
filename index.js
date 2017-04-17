@@ -20,7 +20,7 @@ app.post("/login", function(req,res){
             var login = "false";
             
             for(var i= 0; i<result.length; i++){
-                if (result[i].user == req.body.name){
+                if (result[i].user == req.body.name.toLowerCase()){
                     if (result[i].password == req.body.password){
                         login= true;
                     }else{
@@ -112,7 +112,10 @@ app.post("/userUmfrage", function(req,res){
             
             /* Daten in die db*/
             var titleChange = req.body.title.split(" ").join("-");
-            titleChange = titleChange.slice(0,titleChange.indexOf("?"));
+            if (titleChange.indexOf("?") > 0){
+             titleChange = titleChange.slice(0,titleChange.indexOf("?"));   
+            }
+            
             var newUrl = url+req.body.user+"/"+titleChange;
             
             

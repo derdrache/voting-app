@@ -1,7 +1,7 @@
 app.controller('umfragenController', ['$scope', "$location", "$http", "$cookies","$routeParams","$route", function($scope,$location, $http, $cookies,$routeParams,$route) {
 
     //cookie für schon gewählt fehlt noch
-
+    
     var umfrage = $routeParams;
     var daten= {};
     $scope.user = false;
@@ -9,6 +9,7 @@ app.controller('umfragenController', ['$scope', "$location", "$http", "$cookies"
     $scope.abstimmenShow = true;
     $scope.abstimmungsErgebnis = false;
     
+    /* EIn User oder Gast*/
     if ($cookies.get("userName")){
         $scope.userName = $cookies.get("userName");
         $scope.gast= false;
@@ -17,15 +18,29 @@ app.controller('umfragenController', ['$scope', "$location", "$http", "$cookies"
     }
     else{$scope.userName = "Gast"}
     
+    
+    /* Daten abfragen */
     $http.post("/umfragen", umfrage).success(function(res){
         $scope.umfrageDaten = res;
         $scope.optionen = res.optionen;
         daten= res;
+        
+        /* Wenn schon abgestimmt*/
+        if ($cookies.get("userAbgestimmt")){
+            Zeichnung();
+            $scope.abstimmenShow = false;
+            $scope.abstimmungsErgebnis = true;
+        }
     });
+    
+  
+    
 
+    
+    /* Abstimmen */
     $scope.auswahl = function(auswahl){
         var index= -1;
-        
+        $cookies.put("userAbgestimmt", true)
 
         for (var i = 0; i<daten.optionen.length; i++){
             if (auswahl == daten.optionen[i]){
@@ -45,15 +60,19 @@ app.controller('umfragenController', ['$scope', "$location", "$http", "$cookies"
       
         
         // Darstellung
-        
+        Zeichnung();
+
+    };  
+    
+    
+    function Zeichnung (){
+                
             var abstimmungsData= [];
             var stimmenGes = 0;
         for (var i= 0; i<daten.stimmen.length; i++){
             abstimmungsData.push({"optionen": daten.optionen[i], "stimmen" : daten.stimmen[i]})
             stimmenGes = stimmenGes + daten.stimmen[i];
             }
-        
-
 
         var margin = {
             top: 30,
@@ -114,9 +133,6 @@ app.controller('umfragenController', ['$scope', "$location", "$http", "$cookies"
                 .attr("y", function(d){
                     return (h - (h/stimmenGes*d.stimmen*0.95)-10);
                 })
-
-
-
-   
-    };   
+    }
+    
 }]);

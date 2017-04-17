@@ -8,7 +8,7 @@ app.controller('signUpController', ['$scope', "$location", "$http", "$cookies", 
             $http.post("/signUp", newUserData).success(function(res){
                 if (res == true){$location.path("/userHome")}
                 else{$scope.regError = res}
-                $cookies.put("userName", newUserData.name) 
+                $cookies.put("userName", newUserData.name.toLowerCase()) 
             });
        }
     };

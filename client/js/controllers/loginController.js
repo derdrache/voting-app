@@ -6,7 +6,7 @@ app.controller('loginController', ['$scope', "$location", "$http", "$cookies", f
             $http.post ("/login", loginData).success(function(res){
                 if (res == true){
                     $location.path("/userHome");
-                    $cookies.put("userName", loginData.name)
+                    $cookies.put("userName", loginData.name.toLowerCase())
                 }
                 else {$scope.loginError = "Name oder Passwort falsch"}
             });
